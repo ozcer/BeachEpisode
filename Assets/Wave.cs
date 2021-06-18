@@ -5,22 +5,34 @@ using UnityEngine;
 public class Wave : MonoBehaviour
 {
     public Sounder sounder;
-    public float top, bottom, deviation, time;
 
+    [Range(0f, 1f)]
+    // Height of height and low tides relative to wave height
+    public float top, bottom;
+    
+    public float time;
+    private float height;
+    private RectTransform rt;
+    
     // Start is called before the first frame update
     void Start()
     {
+        rt = GetComponent<RectTransform>();
+        height = rt.sizeDelta.y;
+        print("wave heiight is " + height);
+        
         HighTide();
     }
 
-    public void HighTide()
+    private void HighTide()
     {
-        LeanTween.moveY(gameObject, top + Random.Range(-deviation, deviation), time).setOnComplete(LowTide);
+        LeanTween.moveY(rt, -height + (top * height), time).setOnComplete(LowTide);
     }
 
-    public void LowTide()
+    private void LowTide()
     {
         sounder.PlayWave();
-        LeanTween.moveY(gameObject, bottom, time * 1.5f).setOnComplete(HighTide);
+        print(-height);
+        LeanTween.moveY(rt, bottom * -height, time * 1.5f).setOnComplete(HighTide);
     }
 }

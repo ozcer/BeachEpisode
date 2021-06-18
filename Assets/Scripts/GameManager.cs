@@ -97,10 +97,10 @@ public class GameManager : MonoBehaviour
 
     IEnumerator RandomSpawn(float delay)
     {
-        print(delay + " seconds before next wave");
+        // print(delay + " seconds before next wave");
         yield return new WaitForSeconds(delay);
         int size = Random.Range(minSpawnSize, maxSpawnSize + 1);
-        print("Here comes " + size + " mandems");
+        // print("Here comes " + size + " mandems");
         for (int i = 0; i < size; i++)
         {
             SpawnPatron();

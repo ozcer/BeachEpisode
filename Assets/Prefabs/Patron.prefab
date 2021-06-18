@@ -403,7 +403,7 @@ MonoBehaviour:
   chillChance: 0.3
   orderChance: 0.7
   isBuyer: 0
-  duckChance: 0.1
+  duckChance: 0.15
   sss: {fileID: 3113609071018651254}
   reward: 50
   state: 0
